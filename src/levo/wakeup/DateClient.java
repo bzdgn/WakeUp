@@ -56,14 +56,18 @@ public class DateClient {
 //                PrintWriter out =
 //                    new PrintWriter(s.getOutputStream(), true);
 //                out.println("I'm here, Wake Up please!");
-            	try {
+            	try
+            	{
 					Thread.sleep(1000);
 					System.out.println("sleeping");
-				} catch (InterruptedException e) {
+				}
+            	catch (InterruptedException e)
+            	{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-            } finally 
+            }
+            finally 
             {
                 ;
             }
