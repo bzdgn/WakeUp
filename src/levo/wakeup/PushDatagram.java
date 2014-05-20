@@ -10,45 +10,22 @@ public class PushDatagram
 {
 
     public static void main(String[] args) throws IOException
-    {
-        String serverAddress = "192.168.2.89";
-        
+    {        
         while(true)
-        {
-//        	Socket s = new Socket(serverAddress, 9090);
-        	
+        {     	
             try
             {
 //            	byte[] buffer = new byte[65508];
+//            	byte can be used
             	DatagramSocket datagramSocket = new DatagramSocket();
             	String buffer = "I'm here, Wake Up please!";
             	
+//            	Can be traced with RawCap.exe tool for windows local loopback and viewed with Wireshark
             	InetAddress address = InetAddress.getByName("localhost");
             	DatagramPacket packet = new DatagramPacket(buffer.getBytes(), buffer.length(), address, 9000);
-            	InetAddress address2 = InetAddress.getByName("192.168.2.89");
-            	DatagramPacket packet2 = new DatagramPacket(buffer.getBytes(), buffer.length(), address, 9000);
             	
             	datagramSocket.send(packet);
             	
-////            	MulticastSocket s = new MulticastSocket(8080);
-//            	Socket s = new Socket("localhost", 9090)
-//            	String msg = "I'm here, Wake Up please!";
-//            	InetAddress ip = InetAddress.getByName("localhost");
-////            	InetAddress ip = InetAddress.getByName("192.168.2.89");
-//            	DatagramPacket hi = new DatagramPacket(msg.getBytes(), msg.length(), ip, 8080);
-//            	s.send(hi);
-            	
-//            	 String msg = "I'm here, Wake Up please!";
-//            	 InetAddress group = InetAddress.getByName(serverAddress);
-//            	 MulticastSocket s = new MulticastSocket(6789);
-//            	 s.joinGroup(group);
-//            	 DatagramPacket hi = new DatagramPacket(msg.getBytes(), msg.length(),
-//            	                             group, 6789);
-//            	 s.send(hi);
-            	
-//                PrintWriter out =
-//                    new PrintWriter(s.getOutputStream(), true);
-//                out.println("I'm here, Wake Up please!");
             	try
             	{
 					Thread.sleep(1000);
