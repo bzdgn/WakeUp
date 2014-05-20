@@ -5,17 +5,10 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-/**
- * Trivial client for the date server.
- */
-public class DateClient {
 
-    /**
-     * Runs the client as an application.  First it displays a dialog
-     * box asking for the IP address or hostname of a host running
-     * the date server, then connects to it and displays the date that
-     * it serves.
-     */
+public class PushDatagram
+{
+
     public static void main(String[] args) throws IOException
     {
         String serverAddress = "192.168.2.89";
