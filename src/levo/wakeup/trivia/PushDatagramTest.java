@@ -1,18 +1,19 @@
-package levo.wakeup;
+package levo.wakeup.trivia;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class PushDatagram
+public class PushDatagramTest
 {
 
 	public static void main(String[] args) throws IOException
 	{
 		while (true)
 		{
-			try {
+			try
+			{
 				// byte[] buffer = new byte[65508];
 				// byte can be used
 				DatagramSocket datagramSocket = new DatagramSocket();
@@ -20,7 +21,7 @@ public class PushDatagram
 
 				// Can be traced with RawCap.exe tool for windows local loopback
 				// and viewed with Wireshark
-				InetAddress address = InetAddress.getByName("192.168.1.101");
+				InetAddress address = InetAddress.getByName("85.105.173.113");
 				DatagramPacket packet = new DatagramPacket(buffer.getBytes(),
 						buffer.length(), address, 9000);
 
@@ -34,7 +35,8 @@ public class PushDatagram
 				{
 					e.printStackTrace();
 				}
-			} finally
+			}
+			finally
 			{
 				;
 			}
