@@ -5,3 +5,5 @@ just an experimental tryout.
 Plan to make a multithreaded notification engine for each port so a pool must be used. May be the 
 triggering mechanism should be done with a tcp packet payload stores the STATUS (ON|OFF) or something
 like that. A restful web service returning a JSON or XML can also be used.
+
+-Udp Port Forwarder class added, spagetti code will be cleaned soon!
