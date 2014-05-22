@@ -10,8 +10,11 @@ public class GetDatagramTest
 
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
-		DatagramSocket datagramSocket = new DatagramSocket(9000);
-		byte[] buffer = new byte[20];
+		System.out.println("usage: GetDatagramTest [UDP Port]");
+		System.out.println("ex: GetDatagramTest 666");
+		
+		DatagramSocket datagramSocket = new DatagramSocket(Integer.parseInt(args[1]));
+		byte[] buffer = new byte[1024];
 		
 		while (true)
 		{			
@@ -32,8 +35,8 @@ public class GetDatagramTest
 					", with payload: " + msg
 				);
 				
-				Thread.sleep(1000);
-				System.out.println("sleeping");
+//				Thread.sleep(1000);
+//				System.out.println("sleeping");
 				
 //				try
 //				{
