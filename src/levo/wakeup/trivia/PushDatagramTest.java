@@ -23,16 +23,16 @@ public class PushDatagramTest
 
 				// Can be traced with RawCap.exe tool for windows local loopback
 				// and viewed with Wireshark
-				InetAddress address = InetAddress.getByName(args[1]);
+				InetAddress address = InetAddress.getByName(args[0]);
 				DatagramPacket packet = new DatagramPacket(buffer.getBytes(),
-						buffer.length(), address, Integer.parseInt(args[2]));
+						buffer.length(), address, Integer.parseInt(args[1]));
 
 				datagramSocket.send(packet);
 
 				try
 				{
-					Thread.sleep(Long.parseLong(args[3]));
-					System.out.println("sleeping");
+					Thread.sleep(Long.parseLong(args[2]));
+					System.out.println("sleeping for " + args[2] + " ms");
 				} catch (InterruptedException e)
 				{
 					e.printStackTrace();

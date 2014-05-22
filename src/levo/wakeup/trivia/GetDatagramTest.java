@@ -13,7 +13,13 @@ public class GetDatagramTest
 		System.out.println("usage: GetDatagramTest [UDP Port]");
 		System.out.println("ex: GetDatagramTest 666");
 		
-		DatagramSocket datagramSocket = new DatagramSocket(Integer.parseInt(args[1]));
+		System.out.println("");
+		System.out.println("Listener initializing;");
+		for(int j = 0; j < 10; j++)
+			for(int i = 0; i < 40; i++)
+				System.out.printf(".");
+		System.out.println("Listener: UDP Port[" + args[0] + "]");
+		DatagramSocket datagramSocket = new DatagramSocket(Integer.parseInt(args[0]));
 		byte[] buffer = new byte[1024];
 		
 		while (true)
@@ -31,12 +37,18 @@ public class GetDatagramTest
 				
 				System.out.println
 				(
-					"Received UDP Packet from: [" + packet.getSocketAddress().toString() + "]" + 
-					", with payload: " + msg
+					"Received UDP Packet from: [" + packet.getSocketAddress().toString() + "]"
 				);
+				System.out.println("...Payload: " + msg);
 				
-//				Thread.sleep(1000);
-//				System.out.println("sleeping");
+				try
+				{
+					Thread.sleep(Long.parseLong(args[1]));
+					System.out.println("sleeping for " + args[1] + " ms");
+				} catch (InterruptedException e)
+				{
+					e.printStackTrace();
+				}
 				
 //				try
 //				{
