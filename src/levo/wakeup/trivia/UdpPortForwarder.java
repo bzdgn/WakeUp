@@ -10,7 +10,7 @@ public class UdpPortForwarder
 
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
-		System.out.println("usage: UdpPortForwarder [UDP Port] [Forward Target Ip] [Target UDP Port] [Listener Sleep Interval in ms]");
+		System.out.println("usage: UdpPortForwarder [UDP Port] [Target UDP Port] [Forward Target Ip]  [Listener Sleep Interval in ms]");
 		System.out.println("ex: UdpPortForwarder 666 777 192.168.1.66 1000");
 		
 		System.out.println("");
@@ -47,12 +47,12 @@ public class UdpPortForwarder
 
 				// Can be traced with RawCap.exe tool for windows local loopback
 				// and viewed with Wireshark
-				InetAddress address = InetAddress.getByName(args[1]);
+				InetAddress address = InetAddress.getByName(args[2]);
 				DatagramPacket forwardPacket = new DatagramPacket(buffer2,
-						buffer2.length, address, Integer.parseInt(args[2]));
+						buffer2.length, address, Integer.parseInt(args[1]));
 
 				forwardDatagramSocket.send(forwardPacket);
-				System.out.println("Packet forwarded to: " + args[1] + ":" + args[2]);
+				System.out.println("Packet forwarded to: " + args[2] + ":" + args[1]);
 				//************
 				//FORWARD HERE
 				
@@ -63,7 +63,7 @@ public class UdpPortForwarder
 				try
 				{
 					Thread.sleep(Long.parseLong(args[3]));
-					System.out.println("sleeping for " + args[1] + " ms");
+					System.out.println("sleeping for " + args[3] + " ms");
 				} catch (InterruptedException e)
 				{
 					e.printStackTrace();
