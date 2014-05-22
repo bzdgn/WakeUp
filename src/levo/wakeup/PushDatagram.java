@@ -20,7 +20,7 @@ public class PushDatagram
 
 				// Can be traced with RawCap.exe tool for windows local loopback
 				// and viewed with Wireshark
-				InetAddress address = InetAddress.getByName("localhost");
+				InetAddress address = InetAddress.getByName("192.168.1.101");
 				DatagramPacket packet = new DatagramPacket(buffer.getBytes(),
 						buffer.length(), address, 9000);
 

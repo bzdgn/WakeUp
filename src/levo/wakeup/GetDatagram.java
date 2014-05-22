@@ -8,40 +8,45 @@ import java.net.InetAddress;
 public class GetDatagram
 {
 
-	public static void main(String[] args) throws IOException
+	public static void main(String[] args) throws IOException, InterruptedException
 	{
+		DatagramSocket datagramSocket = new DatagramSocket(9000);
+		byte[] buffer = new byte[20];
+		
 		while (true)
-		{
-			try
-			{
-				DatagramSocket datagramSocket = new DatagramSocket(80);
-
-//				byte[] buffer = new byte[10];
-//				byte can be used
-				String buffer = "";
+		{			
+//			try
+//			{
 				
-				DatagramPacket packet = new DatagramPacket(buffer.getBytes(), buffer.length());
+//				byte can be used
+				
+				DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
 
 				datagramSocket.receive(packet);
+				byte[] buffer2 = packet.getData();
+				String msg = new String(buffer2, "UTF-8");
 				
 				System.out.println
 				(
-					"Received UDP Packet from: [" + packet.getSocketAddress().toString() + ":" + packet.getSocketAddress().toString() +
-					":" + packet.getPort() + " , with payload: " + buffer
+					"Received UDP Packet from: [" + packet.getSocketAddress().toString() + "]" + 
+					", with payload: " + msg
 				);
-
-				try
-				{
-					Thread.sleep(1000);
-					System.out.println("sleeping");
-				} catch (InterruptedException e)
-				{
-					e.printStackTrace();
-				}
-			} finally
-			{
-				;
-			}
+				
+				Thread.sleep(1000);
+				System.out.println("sleeping");
+				
+//				try
+//				{
+//					Thread.sleep(1000);
+//					System.out.println("sleeping");
+//				} catch (InterruptedException e)
+//				{
+//					e.printStackTrace();
+//				}
+//			} finally
+//			{
+//				;
+//			}
 
 		}
 
